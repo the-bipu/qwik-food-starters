@@ -4,7 +4,7 @@ import { venues } from '../../../../db.json';
 
 export default component$(() => {
     const loc = useLocation();
-    const id: any = loc.params.id;
+    const id: number = parseInt(loc.params.id, 10);
     const venue = venues[id];
 
     return (
