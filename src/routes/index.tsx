@@ -1,5 +1,6 @@
 import { component$, useSignal } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { Link, type DocumentHead } from "@builder.io/qwik-city";
+import { venues } from '../../db.json';
 
 export default component$(() => {
   const user = useSignal("You (yes, i'm talking to you)");
@@ -13,6 +14,19 @@ export default component$(() => {
         Happy coding.
       </div>
       <button class='bg-black text-white p-2 rounded' onClick$={() => user.value = 'Don"t afraid. It"s just some dark magic... 😆'}>Click to change the name...</button>
+
+      <div class="grid grid-cols-3 gap-4 mt-10">
+        {venues.map((venue) => (
+          <div key={venue.id} class="bg-white rounded-lg">
+            <div class="aspect-[4/3] bg-cover bg-center rounded-lg" style={`background-image:url('${venue.image}')`}></div>
+            <div class="p-6">
+              <h3>{venue.name}</h3>
+              <p class="text-gray-400">{venue.address}</p>
+              <Link class="text-sky-500" href={`/venue/${venue.id}`}>Details</Link>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   );
 });
