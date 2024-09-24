@@ -7,18 +7,20 @@ export default component$(() => {
     const id: any = loc.params.id;
     const venue = venues[id];
 
+    if (!venue) {
+        return <p>Venue not found.</p>;
+    }
+
     return (
         <>
-            {venue && (
-                <div key={venue.id} class="bg-white rounded-lg">
-                    <div class="aspect-[4/3] bg-cover bg-center rounded-lg" style={`background-image:url('${venue.image}')`}></div>
-                    <div class="p-6">
-                        <h3>{venue.name}</h3>
-                        <p class="text-gray-400">{venue.address}</p>
-                        <p class="text-gray-400">{venue.description}</p>
-                    </div>
+            <div key={venue.id} class="bg-white rounded-lg">
+                <div class="aspect-[4/3] bg-cover bg-center rounded-lg" style={`background-image:url('${venue.image}')`}></div>
+                <div class="p-6">
+                    <h3>{venue.name}</h3>
+                    <p class="text-gray-400">{venue.address}</p>
+                    <p class="text-gray-400">{venue.description}</p>
                 </div>
-            )}
+            </div>
         </>
     );
 });
