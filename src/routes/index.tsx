@@ -22,7 +22,7 @@ export default component$(() => {
             <div class="p-6">
               <h3>{venue.name}</h3>
               <p class="text-gray-400">{venue.address}</p>
-              <Link class="text-sky-500" href={`/venue/${venue.id}`}>Details</Link>
+              <Link class="text-sky-500" href={`/venue/${venue.id - 1}`}>Details</Link>
             </div>
           </div>
         ))}
